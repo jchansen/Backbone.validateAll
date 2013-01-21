@@ -10,10 +10,10 @@
         // returning `true` if all is well. If a specific `error` callback has
         // been passed, call that instead of firing the general `"error"` event.
         window.Backbone.Model.prototype._validate = function(attrs, options) {
-            if (options.silent || !this.validate) {
+            if (options && options.silent || !this.validate) {
                 return true;
             }
-            if (options.validateAll !== false) {
+            if (options && options.validateAll !== false) {
                 attrs = _.extend({}, this.attributes, attrs);
             }
             var error = this.validate(attrs, options);
